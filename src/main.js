@@ -10,22 +10,31 @@ import GUI from "three/examples/jsm/libs/lil-gui.module.min.js";
 
 // setup
 const fov = 75;
-const aspect = window.innerWidth / window.innerHeight;
+let aspect = window.innerWidth / window.innerHeight;
 const near = 0.1;
 const far = 1000;
+
+const canvas = document.querySelector("#bg");
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.set(0, 10, 20);
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector("#bg"),
+  canvas: canvas,
   antialias: true,
   alpha: true,
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 
+addEventListener("resize", () => {
+  // canvas.style.width = innerWidth + "px";
+  // canvas.style.height = innerHeight + "px";
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
 //lights
 // const skyColor = 0x8006d9; // purple
 // const groundColor = 0xe8b962; // orange
@@ -62,7 +71,7 @@ const gui = new GUI();
 // gui
 //   .addColor(new ColorGUIHelper(light, "groundColor"), "value")
 //   .name("groundColor");
-gui.addColor(new ColorGUIHelper(light, "color"), "value").name("color");
+gui.addColor(new ColorGUIHelper(light, "color"), "value").name("colour");
 gui.add(light, "intensity", 0, 5, 0.01);
 // x
 gui.add(light.target.position, "x", -10, 10).onChange(() => updateLight());

@@ -1,0 +1,9 @@
+#fps-display {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  color: rgb(255, 95, 255);
+  text-shadow: 2px 2px 0 black;
+  font-family: inter;
+  font-size: 14px;
+}

@@ -2,4 +2,4 @@
 
 testing three js
 
-[docs](threejs.org/docs/?)
+[docs](https://threejs.org/docs/)

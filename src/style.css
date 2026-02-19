@@ -72,6 +72,10 @@ canvas {
   top: 0;
   left: 0;
 
+  cursor: grab;
   /* background-image: url("./assets/dota_stars_wallpaper.jpg");
   background-size: cover; */
+}
+canvas:active {
+  cursor: grabbing;
 }
