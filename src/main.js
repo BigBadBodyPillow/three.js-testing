@@ -35,17 +35,18 @@ addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 });
+
 //lights
 // const skyColor = 0x8006d9; // purple
 // const groundColor = 0xe8b962; // orange
 const intensity = 5;
 // const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
-
 const color = 0xffffff; // purple
 const light = new THREE.DirectionalLight(color, intensity);
+const ambientLight = new THREE.AmbientLight(0x404040);
 light.position.set(0, 10, 0);
 light.target.position.set(0, 5, 0);
-scene.add(light);
+scene.add(light, ambientLight);
 scene.add(light.target);
 
 // lighting controler gui
